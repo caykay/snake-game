@@ -50,4 +50,10 @@ while snake.is_alive:
         snake.is_alive = False
         sb.game_over()
 
+    # detect collision with tail.
+    for fragment in snake.fragments[1:]:
+        if snake.head.distance(fragment) < 10:
+            snake.is_alive = False
+            sb.game_over()
+
 my_screen.exitonclick()
