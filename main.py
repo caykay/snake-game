@@ -10,6 +10,7 @@
 from turtle import Screen
 from snake import Snake
 from food import Food
+from score_board import ScoreBoard
 import time
 
 # Main screen setup
@@ -21,6 +22,7 @@ my_screen.tracer(0)  # turn tracer off / animation off
 
 snake = Snake()
 food = Food()
+sb = ScoreBoard()
 
 my_screen.listen()
 my_screen.onkey(snake.up, "Up")
@@ -28,7 +30,7 @@ my_screen.onkey(snake.down, "Down")
 my_screen.onkey(snake.left, "Left")
 my_screen.onkey(snake.right, "Right")
 
-# snake.is_alive = False
+snake.is_alive = False
 while snake.is_alive:
     my_screen.update()  # turn tracer on / update animation after progress happens
     # we use the timer to delay the animation refresh otherwise we cannot see it happen
@@ -39,5 +41,6 @@ while snake.is_alive:
     #  detect collision with food
     if snake.head.distance(food) < 15:
         food.refresh()
+        sb.update()
 
 my_screen.exitonclick()
