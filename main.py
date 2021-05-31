@@ -1,9 +1,9 @@
 # STEPS
 # 1. Create a snake body  ✅
 # 2. Move the snake  ✅
-# 3. Create snake food
-# 4. Detect collision w/ food
-# 5. Create a scoreboard
+# 3. Create snake food  ✅
+# 4. Detect collision w/ food  ✅
+# 5. Create a scoreboard  ✅
 # 6. Detect collision with a wall
 # 7. Detect collision with tail
 
@@ -30,7 +30,7 @@ my_screen.onkey(snake.down, "Down")
 my_screen.onkey(snake.left, "Left")
 my_screen.onkey(snake.right, "Right")
 
-snake.is_alive = False
+# snake.is_alive = False
 while snake.is_alive:
     my_screen.update()  # turn tracer on / update animation after progress happens
     # we use the timer to delay the animation refresh otherwise we cannot see it happen
@@ -38,9 +38,15 @@ while snake.is_alive:
 
     snake.move()
 
-    #  detect collision with food
+    #  detect a collision with food
     if snake.head.distance(food) < 15:
         food.refresh()
         sb.update()
+
+    # detect a collision with wall
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or \
+            snake.head.ycor() > 280 or snake.head.ycor() < -280:
+        snake.is_alive = False
+        sb.game_over()
 
 my_screen.exitonclick()
