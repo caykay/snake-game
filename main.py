@@ -28,11 +28,16 @@ my_screen.onkey(snake.down, "Down")
 my_screen.onkey(snake.left, "Left")
 my_screen.onkey(snake.right, "Right")
 
+# snake.is_alive = False
 while snake.is_alive:
     my_screen.update()  # turn tracer on / update animation after progress happens
     # we use the timer to delay the animation refresh otherwise we cannot see it happen
     time.sleep(.1)  # slightly delay by .1 seconds after every animation update
 
     snake.move()
+
+    #  detect collision with food
+    if snake.head.distance(food) < 15:
+        food.refresh()
 
 my_screen.exitonclick()
