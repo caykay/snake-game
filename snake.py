@@ -19,11 +19,22 @@ class Snake:  # 🐍
     def create_body(self):
         """Create the initial snake body. initial size = 3 fragments."""
         for pos in STARTING_POS:
-            new_frag = Turtle("square")
-            new_frag.color("white")
-            new_frag.penup()
-            new_frag.setpos(pos)
-            self.fragments.append(new_frag)
+            self.add_fragment(pos)
+
+    def add_fragment(self, position):
+        new_frag = Turtle("square")
+        new_frag.color("white")
+        new_frag.penup()
+        new_frag.setpos(position)
+        self.fragments.append(new_frag)
+
+    def extend(self):
+        """Increases the snake's fragments by one"""
+        last_frag_pos = self.fragments[-1].pos()
+        # the new fragment will take the position of the very last fragment
+        # so on the very slight next move the positions will be adjusted
+        # such that the snake appears at an expected length
+        self.add_fragment(last_frag_pos)
 
     def move(self):
         """The moving mechanics are such that the last fragment follows the position of that next to it

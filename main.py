@@ -40,6 +40,7 @@ while snake.is_alive:
 
     #  detect a collision with food
     if snake.head.distance(food) < 15:
+        snake.extend()
         food.refresh()
         sb.update()
 
