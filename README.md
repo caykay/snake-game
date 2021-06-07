@@ -22,7 +22,7 @@ The more food the snake eats the more it grows.
 The game follows the same old rules.
 - To move use the up, down, right and left direction keys.
 - The snake cannot turn to the opposite of the direction its facing.
-- _You cannot go pas walls (Not particularly an old rule but may change)_
+- _You cannot go past walls (Not particularly an old rule but may change)_
 - Try avoiding biting yourself otherwise it's game over for you.
 
 ### Gameplay screenshots
